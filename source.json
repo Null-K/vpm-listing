@@ -2,7 +2,10 @@
   "name": "PuddingKC's VPM Packages",
   "id": "com.puddingkc.vpm-listing",
   "url": "https://Null-K.github.io/vpm-listing/index.json",
-  "author": "PuddingKC",
+  "author": {
+    "name": "PuddingKC",
+    "url": "https://github.com/Null-K"
+  },
   "description": "PuddingKC's VRChat packages for Modular Avatar",
   "infoLink": {
     "url": "https://github.com/Null-K",
