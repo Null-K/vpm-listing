@@ -6,14 +6,15 @@
     "name": "PuddingKC",
     "url": "https://github.com/Null-K"
   },
-  "description": "PuddingKC's VRChat packages for Modular Avatar",
+  "description": "PuddingKC's VRChat Unity Extensions",
   "infoLink": {
     "url": "https://github.com/Null-K",
     "text": "GitHub"
   },
   "bannerUrl": "",
   "githubRepos": [
-    "Null-K/ma-radial-control"
+    "Null-K/ma-radial-control",
+    "Null-K/avatar-name-obfuscator"
   ],
   "packages": []
 }
