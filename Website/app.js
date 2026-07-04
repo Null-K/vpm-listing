@@ -30,29 +30,32 @@ const PACKAGES = {
 };
 
 const setTheme = () => {
-  const isDarkTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
-  if (isDarkTheme()) {
-    baseLayerLuminance.setValueFor(document.documentElement, StandardLuminance.DarkMode);
-  } else {
-    baseLayerLuminance.setValueFor(document.documentElement, StandardLuminance.LightMode);
-  }
+  baseLayerLuminance.setValueFor(document.documentElement, StandardLuminance.DarkMode);
 }
 
 (() => {
   setTheme();
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    setTheme();
-  });
-
   const packageGrid = document.getElementById('packageGrid');
+
+  const packageCount = document.getElementById('packageCount');
+  const totalPackageCount = Object.keys(PACKAGES).length;
+  const updatePackageCount = (visible) => {
+    if (!packageCount) return;
+    packageCount.textContent = visible === totalPackageCount
+      ? `${totalPackageCount}`
+      : `${visible} / ${totalPackageCount}`;
+  };
+  updatePackageCount(totalPackageCount);
 
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', ({ target: { value = '' }}) => {
     const items = packageGrid.querySelectorAll('fluent-data-grid-row[row-type="default"]');
+    let visibleCount = 0;
     items.forEach(item => {
       if (value === '') {
         item.style.display = 'grid';
+        visibleCount++;
         return;
       }
       if (
@@ -60,10 +63,12 @@ const setTheme = () => {
         item.dataset?.packageId?.toLowerCase()?.includes(value.toLowerCase())
       ) {
         item.style.display = 'grid';
+        visibleCount++;
       } else {
         item.style.display = 'none';
       }
     });
+    updatePackageCount(visibleCount);
   });
 
   const urlBarHelpButton = document.getElementById('urlBarHelp');
