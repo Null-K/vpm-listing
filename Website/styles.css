@@ -246,6 +246,14 @@ fluent-menu, fluent-dialog {
   --neutral-foreground-rest: var(--text);
 }
 
+#addListingToVccHelp {
+  z-index: 11;
+}
+
+#packageInfoModal {
+  z-index: 10;
+}
+
 fluent-tooltip {
   font-family: var(--font-body);
   --neutral-fill-rest: var(--surface-raised);
